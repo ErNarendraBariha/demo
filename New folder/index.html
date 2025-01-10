@@ -1,0 +1,471 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Complete Responsive Personal Portfolio Website</title>
+    <link href="https://unpkg.com/boxicons@2.1.4/css/boxicons.min.css" rel="stylesheet">
+    <link rel="stylesheet" href="css/style.css">
+    <style>
+        @import url('https://fonts.googleapis.com/css2?family=Poppins:wght@400;500;700&display=swap');  
+
+        * {  
+            margin: 0;  
+            padding: 0;  
+            box-sizing: border-box;  
+            text-decoration: none;  
+            border: none;  
+            outline: none;  
+            font-family: "Poppins", sans-serif;  
+        }  
+
+        :root {  
+            --bg-color: #1f242d;  
+            --second-bg-color: #323946;  
+            --main-color: #7cf03d;  
+            --white-color: #fff;  
+            --disabled-color: #fff3;  
+        }  
+
+        html {  
+            font-size: 62.5%;  
+            scroll-behavior: smooth;
+        }
+
+        body {  
+            color: var(--white-color);  
+            background: var(--bg-color);
+            overflow-x: hidden;
+        }
+
+        section {  
+            min-height: 100vh;
+            padding: 10rem 9% 2rem;
+            background: var(--bg-color);
+        }
+
+        .services {
+            padding-top: 8rem;
+            min-height: 100vh;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+        }
+
+        header {  
+            position: fixed;  
+            top: 0;  
+            left: 0;  
+            width: 100%;  
+            padding: 2rem 9%;  
+            background: var(--bg-color);  
+            display: flex;  
+            justify-content: space-between;  
+            align-items: center;  
+            z-index: 100;
+            box-shadow: 0 2px 10px rgba(0, 0, 0, 0.2);
+        }
+
+        .logo {  
+            font-size: 3rem;  
+            color: var(--white-color);  
+            font-weight: 700;  
+        }  
+
+        nav a {  
+            font-size: 2rem;  
+            color: var(--white-color);  
+            font-weight: 500;  
+            margin-left: 3.5rem;  
+            transition: .5s;  
+        }  
+
+        nav a:hover,
+        nav   {  
+            color: var(--main-color);  
+        }
+
+        #menu-icon {  
+            font-size: 4rem;  
+            display: none;  
+        }
+
+        .home {  
+            display: flex;  
+            align-items: center;  
+            gap: 5rem;  
+            flex-wrap: wrap;  
+        }  
+
+        .home-detail h1 {  
+            font-size: clamp(3.5rem, 10vw, 5.5rem);  
+        }
+
+        .home-detail h2 {  
+            display: inline-block;  
+            font-size: 3.2rem;  
+            margin-top: -1rem;  
+        }  
+
+        .home-detail h2 span {  
+            position: relative;  
+            display: inline-block;  
+            color: transparent;  
+            -webkit-text-stroke: .07rem var(--main-color);  
+            animation: display-text 16s linear infinite;  
+            animation-delay: calc(-4s * var(--i));  
+        }  
+
+        @keyframes display-text {  
+            25% ,  
+            100% {  
+                display: none;  
+            }  
+        }
+
+        .home-detail h2 span::before {  
+            content: attr(data-text);  
+            position: absolute;  
+            width: 0;  
+            border-right: .2rem solid var(--main-color);  
+            color: var(--main-color);  
+            white-space: nowrap;  
+            overflow: hidden;  
+            animation: fill-text 4s linear infinite;  
+        }  
+
+        @keyframes fill-text {  
+            10% ,
+            100% {  
+                width: 0;  
+            }  
+
+            70%,
+            90% {  
+                width: 100%;  
+            }  
+            
+        }
+
+        .home-detail p {  
+            font-size: 1.6rem;  
+            margin: 1rem 0 2.5rem;  
+        }  
+
+        .home-detail .btn-sci {  
+            display: flex;  
+            align-items: center;  
+        }
+
+        .btn {  
+            display: inline-block;  
+            padding: 1rem 3rem;  
+            background: var(--main-color);  
+            border: .2rem solid var(--main-color);  
+            border-radius: 4rem;  
+            box-shadow: 0 0 1rem var(--main-color);  
+            font-size: 1.6rem;  
+            color: var(--bg-color);  
+            font-weight: 500;  
+            transition: .5s;  
+        }  
+
+        .btn:hover {  
+            background: transparent;  
+            color: var(--main-color);   
+            box-shadow: none;  
+        }
+
+        .home-detail .btn-sci .sci a {  
+            display: inline-flex;  
+            padding: .8rem;  
+            border: .2rem solid var(--main-color);  
+            border-radius: 50%;  
+            font-size: 2rem;  
+            color: var(--main-color);  
+            margin: 0.8rem;  
+            transition: .5s;  
+        }  
+
+        .home-detail .btn-sci .sci a:hover {  
+            background: var(--main-color);  
+            color: var(--bg-color);  
+            box-shadow: 0 0 1rem var(--main-color);  
+        }
+
+        .home-img .img-box {  
+            position: relative;  
+            width: 26vw;  
+            height: 26vw;  
+            border-radius: 50%;  
+            padding: .5rem;  
+            display: flex;  
+            justify-content: center;  
+            align-items: center;  
+            overflow: hidden;  
+        }  
+
+        .home-img .img-box::before,  
+        .home-img .img-box::after {  
+            content: '';  
+            position: absolute;  
+            width: 60rem;  
+            height: 60rem;  
+            background: conic-gradient(transparent, transparent, transparent, var(--main-color));  
+            transform: rotate(0deg);  
+            animation: rotate-border 10s linear infinite;  
+        }  
+
+        .home-img .img-box::after {  
+            animation-delay: -5s;  
+        }  
+
+        @keyframes rotate-border {  
+            100% {  
+                transform: rotate(360deg);  
+            }  
+        }
+
+        .home-img .img-box .img-item {  
+            position: relative;  
+            width: 100%;  
+            height: 100%;  
+            background: var(--bg-color);  
+            border-radius: 50%;  
+            border: .01rem solid var(--bg-color);  
+            display: flex;  
+            justify-content: center;  
+            z-index: 1;  
+            overflow: hidden;  
+        }
+
+        .home-img .img-box .img-item img {  
+            position: absolute;  
+            top: 3rem;  
+            display: block;  
+            width: 90%;  
+            object-fit: cover;  
+            mix-blend-mode: lighten;  
+        }
+
+        .heading {  
+            font-size: 4.5rem;  
+            text-align: center;  
+            margin-bottom: 2rem;  
+        }  
+
+        .heading span {  
+            color: var(--main-color);  
+        }
+
+        .about-detail {
+            max-width: 60rem;
+            margin: 0 auto;
+            padding: 0 2rem;
+        }
+
+        .about-detail p {
+            font-size: 1.6rem;
+            margin: 1rem 0 2.5rem;
+        }
+
+        /* Media Queries for Responsiveness */
+        @media screen and (max-width: 768px) {
+            header {  
+                padding: 2rem 5%;  
+            }
+
+            .home {  
+                flex-direction: column;
+                align-items: center;
+            }
+
+            .home-img .img-box {
+                width: 60vw;
+                height: 60vw;
+            }
+
+            nav {
+                display: none;
+            }
+
+            #menu-icon {
+                display: block;
+                color: var(--white-color);
+                cursor: pointer;
+            }
+
+            /* Show the mobile navigation menu when #menu-icon is clicked */
+            nav.active {
+                display: flex;
+                flex-direction: column;
+                position: absolute;
+                top: 100%;
+                left: 0;
+                width: 100%;
+                background-color: var(--bg-color);
+                padding: 2rem 0;
+            }
+
+            nav.active a {
+                margin: 1.5rem 0;
+                text-align: center;
+            }
+
+            /* Adjust home section text and button sizes for mobile */
+            .home-detail h1 {
+                font-size: clamp(4rem, 8vw, 6rem);
+            }
+
+            .home-detail h2 {
+                font-size: 2.5rem;
+            }
+
+            .home-detail p {
+                font-size: 1.4rem;
+                margin: 1rem 0;
+            }
+
+            .home-detail .btn {
+                padding: 1rem 2.5rem;
+                font-size: 1.4rem;
+            }
+
+            .home-detail .btn-sci .sci a {
+                padding: .6rem;
+                font-size: 1.8rem;
+            }
+
+            .about-detail {
+                padding: 0 1rem;
+            }
+
+            .about-detail p {
+                font-size: 1.4rem;
+            }
+
+            /* Adjust header logo and navigation items for mobile */
+            .logo {
+                font-size: 2.5rem;
+            }
+
+            nav a {
+                font-size: 1.8rem;
+                margin-left: 2rem;
+            }
+        }
+
+        /* For mobile menu */
+        @media screen and (max-width: 480px) {
+            .home-img .img-box {
+                width: 70vw;
+                height: 70vw;
+            }
+
+            .home-detail h1 {
+                font-size: clamp(3.5rem, 6vw, 5rem);
+            }
+
+            .home-detail h2 {
+                font-size: 2.2rem;
+            }
+
+            .home-detail .btn {
+                padding: 1rem 2rem;
+                font-size: 1.2rem;
+            }
+
+            .home-detail .btn-sci .sci a {
+                padding: .5rem;
+                font-size: 1.6rem;
+            }
+
+            /* Mobile menu button */
+            nav {
+                display: none;
+            }
+
+            nav.active {
+                display: flex;
+                flex-direction: column;
+                position: absolute;
+                top: 100%;
+                left: 0;
+                width: 100%;
+                background-color: var(--bg-color);
+                padding: 2rem 0;
+            }
+
+            #menu-icon {
+                display: block;
+                color: var(--white-color);
+                cursor: pointer;
+                font-size: 3rem;
+            }
+
+            nav a {
+                font-size: 1.8rem;
+                text-align: center;
+                margin: 1rem 0;
+            }
+        }
+    </style>
+</head>
+<body>
+    <!-- Header -->
+    <header>
+        <div class="logo">YourLogo</div>
+        <nav>
+            <a href="#">Home</a>
+            <a href="#">About</a>
+            <a href="#">Services</a>
+            <a href="#">Contact</a>
+        </nav>
+        <div id="menu-icon" class="bx bx-menu"></div>
+    </header>
+
+    <!-- Home Section -->
+    <section class="home">
+        <div class="home-detail">
+            <h1>Your Name</h1>
+            <h2>
+                <span data-text="Web Developer">Web Developer</span>
+                <span data-text="UI/UX Designer">UI/UX Designer</span>
+            </h2>
+            <p>Creative and passionate web designer and developer with experience in building dynamic websites.</p>
+            <div class="btn-sci">
+                <a href="https://github.com" target="_blank" class="btn">View GitHub</a>
+                <div class="sci">
+                    <a href="#" target="_blank" class="bx bxl-facebook"></a>
+                    <a href="#" target="_blank" class="bx bxl-twitter"></a>
+                </div>
+            </div>
+        </div>
+        <div class="home-img">
+            <div class="img-box">
+                <div class="img-item">
+                    <img src="images/12.png" alt="Your Image">
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- About Section -->
+    <section class="about">
+        <h2 class="heading">About Me</h2>
+        <div class="about-detail">
+            <p>I'm a passionate developer with expertise in front-end and back-end technologies. My goal is to build websites that are both functional and aesthetically pleasing. I continuously work on improving my skills and learning new technologies.</p>
+        </div>
+    </section>
+
+    <script>
+        const menuIcon = document.getElementById("menu-icon");
+        const nav = document.querySelector("nav");
+
+        menuIcon.addEventListener("click", () => {
+            nav.classList.toggle("active");
+        });
+    </script>
+</body>
+</html>
